@@ -1,0 +1,17 @@
+<div style="border: 1px solid grey; margin: 2px; padding: 5px;">
+  <ng-content></ng-content>
+  <b>
+  container {{container.id}}
+  </b>
+  <div cdkDropList [id]="container.id" [cdkDropListConnectedTo]="connectedLists" style="display: flex; flex-direction: column; position: relative" (cdkDropListDropped)="drop($event)">
+    <div *ngIf="container.children.length < 1">
+      <p>Try to drop items here</p>
+    </div>
+    <div *ngFor="let child of container.children">
+      <app-component cdkDrag [item]="child" [cdkDragData]='[child, container]'>
+        <mat-icon cdkDragHandle containerContent>drag_indicator</mat-icon>
+        <mat-icon cdkDragHandle containeeContent>drag_indicator</mat-icon>
+      </app-component>
+    </div>
+  </div>
+</div>

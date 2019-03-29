@@ -1,0 +1,4 @@
+<h2>Simple Example</h2>
+<div cdkDropList #rootList="cdkDropList" [cdkDropListData]="elements" (cdkDropListDropped)="drop($event)" id='root' [cdkDropListConnectedTo]='connectedLists' [cdkDropListEnterPredicate]="canDropPredicate()">
+  <app-tree-element cdkDrag *ngFor="let element of elements" [element]='element' [connectedLists]='connectedLists'></app-tree-element>
+</div>
